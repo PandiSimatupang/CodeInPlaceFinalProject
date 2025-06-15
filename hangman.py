@@ -8,7 +8,9 @@ wordsList = ['apple', 'banana', 'cranbarry']
 tries = 5
 word = random.choice(wordsList)
 
-
+#game title and some header
+print("Welcome to Hangman!")
+print("===================")
 
 
 def main():
