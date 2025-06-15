@@ -15,14 +15,16 @@ def main():
     print("Welcome to Hangman!")
     print("===================")
 
-    print(f"test: {word}")
-
+    gameLoop()
 
 
 
 def gameLoop():
-    
 
+    guess = input("Guess a letter: ")
+    #check if user input is "single" alphabet
+    if not guess.isalpha() :
+        print("Pleaser type an alphabet...")
 
 
 if __name__ =="__main__":
