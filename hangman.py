@@ -25,8 +25,10 @@ def gameLoop():
         guess = input("Guess a letter: ")
         #check if user input is "single" alphabet
         if not guess.isalpha():
-            print("Pleaser type an alphabet...") 
+            print("Please type an alphabet...") 
             continue
+        if len(guess) != 1:
+            print("Please only type single alphabet....")
 
 
 if __name__ =="__main__":
