@@ -8,16 +8,20 @@ wordsList = ['apple', 'banana', 'cranbarry']
 tries = 5
 word = random.choice(wordsList)
 
-#game title and some header
-print("Welcome to Hangman!")
-print("===================")
 
 
 def main():
+    #game title and some header
+    print("Welcome to Hangman!")
+    print("===================")
+
     print(f"test: {word}")
 
 
 
+
+def gameLoop():
+    
 
 
 
