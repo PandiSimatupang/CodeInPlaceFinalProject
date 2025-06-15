@@ -21,10 +21,12 @@ def main():
 
 def gameLoop():
 
-    guess = input("Guess a letter: ")
-    #check if user input is "single" alphabet
-    if not guess.isalpha() :
-        print("Pleaser type an alphabet...")
+    while(True):
+        guess = input("Guess a letter: ")
+        #check if user input is "single" alphabet
+        if not guess.isalpha():
+            print("Pleaser type an alphabet...") 
+            continue
 
 
 if __name__ =="__main__":
