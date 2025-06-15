@@ -15,13 +15,13 @@ def main():
     print("Welcome to Hangman!")
     print("===================")
 
-    gameLoop()
+    gameLoop(tries)
 
 
 
-def gameLoop():
+def gameLoop(tries):
 
-    while(True):
+    while(tries>0):
         guess = input("Guess a letter: ")
         #check if user input is "single" alphabet
         if not guess.isalpha():
@@ -29,6 +29,9 @@ def gameLoop():
             continue
         if len(guess) != 1:
             print("Please only type single alphabet....")
+            continue
+        
+        tries -= 1
 
 
 if __name__ =="__main__":
