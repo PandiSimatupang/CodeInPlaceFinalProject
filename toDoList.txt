@@ -1,0 +1,2 @@
+1. Add a file list of random words per topic such as computer, fruits, animals, and etc.
+2. Create a main file contain main function
