@@ -2,13 +2,13 @@ import random
 
 
 #game MODE
-TEST = "testing"
-LAUNCH = "launch"
+TEST = "TESTING"
+LAUNCH = "LAUNCH"
 
 #Game mode selection
-#-------------------------> SELECTED MODE
-MODE = TEST
-#-------------------------> SELECTED MODE
+#------------------------------------------> SELECTED MODE
+MODE = LAUNCH   # chose TEST or LAUNCH
+#-------------------------------------------> SELECTED MODE
 DEBUG = (MODE == TEST)  #checking selected mode.. it's "true" if TEST
 
 
@@ -38,7 +38,7 @@ def gameLoop(TRIES):
             continue
         
         #matching the letter
-        if guess in word:
+        if guess in WORD:
             print("match!!")
         else:
             print("wrong guess...")
@@ -48,6 +48,7 @@ def gameLoop(TRIES):
 
 def display_text():
     #game title and some header
+    print("\n" * 20)
     print("Welcome to Hangman!")
     print("===================")
 
