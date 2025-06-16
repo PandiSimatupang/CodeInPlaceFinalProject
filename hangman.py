@@ -31,7 +31,7 @@ def display_text(word, guessedLetter):
     print("===================")
 
     #hits
-    print("_ "*len(word))
+    print("WORD: ", "_ "*len(word))
 
     if DEBUG:
         print(f"MODE: {MODE}, choosen word is {word} ")
@@ -52,6 +52,9 @@ def gameLoop(TRIES, word, guessedLetter):
         if len(guess) != 1:
             print("Please only type single alphabet....")
             continue
+        if guess in guessedLetter:
+            print("This letter is already tried....")
+            continue           
         #if all filter above is passed 
         guessedLetter.append(guess)
 
