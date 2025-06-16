@@ -1,7 +1,6 @@
 import random
 import os
 
-
 #game MODE
 TEST = "TESTING"
 LAUNCH = "LAUNCH"
@@ -106,7 +105,6 @@ def display_text(word, guessedLetter, status, TRIES):
     print("Guessed Letters: ", guessedLetter)
     print("WORD: ", hints)
     
-
     if DEBUG:
         print(f"MODE:  {MODE}", f"choosen word is -----> {word} ")
        #print(guessedLetter)
@@ -134,9 +132,6 @@ def gameLoop(TRIES, word, guessedLetter, status):
 
         #if all filter above is passed 
         guessedLetter.append(guess)
-
-
-
 
         #matching the letter
         if guess in word:
@@ -175,7 +170,6 @@ def gameEnd(gameWin, word):
         print(HANGMAN_PICS[6])
         print_sad_face()
         print("Sorry, try again")
-
     print(f"Hidden word: {word}")
     print("\n"*5)
 
