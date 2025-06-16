@@ -97,9 +97,20 @@ def gameLoop(TRIES, word, guessedLetter, status):
             gameWin = False
     return gameWin
 
-def gameEnd(gameWin):
+####GAME image
+def print_bunny():
+    print(r"""
+     (\__/)
+     (•ㅅ•)
+     / 　 づ
+    """)
+
+
+def gameEnd(gameWin, word):
     if gameWin:
         clearScreen()
+        print_bunny()
+        print(f"Hidden word: {word}")
         print("COMM:  You are win!!!!")
 
     else:
@@ -117,7 +128,7 @@ def main():
     gameWin = False
 
     gameWin= gameLoop(TRIES, word, guessedLetter, status)
-    gameEnd(gameWin)
+    gameEnd(gameWin, word)
 
 
 if __name__ =="__main__":
