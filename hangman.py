@@ -17,7 +17,7 @@ WORDSLIST = ['apple', 'banana', 'cranbarry']
 TRIES = 5
 
 
-def display_text(word, guessedLetter, status):
+def display_text(word, guessedLetter, status, TRIES):
     #clean screen
     print("\n" * 20)
 
@@ -37,9 +37,10 @@ def display_text(word, guessedLetter, status):
             hints += ("_ ")
         
         
-        
+    print("Tries :", TRIES)
+    print("Guessed Letters: ", guessedLetter)
     print("WORD: ", hints)
-
+    
 
     if DEBUG:
         print(f"MODE:  {MODE}", f"choosen word is -----> {word} ")
@@ -52,7 +53,7 @@ def gameLoop(TRIES, word, guessedLetter, status):
 
     while(TRIES>0):
 
-        display_text(word, guessedLetter, status)
+        display_text(word, guessedLetter, status, TRIES)
         guess = input("Guess a letter: ")
 
         #check if user input is "single" alphabet
@@ -78,6 +79,19 @@ def gameLoop(TRIES, word, guessedLetter, status):
         else:
             status = "wrong guess..."
             TRIES -= 1
+        #check win or loose
+        if all(test in guessedLetter for test in word):
+            gameWin = True
+            break
+        else:
+            gameWin = False
+    return gameWin
+
+def gameEnd(gameWin):
+    if gameWin:
+        print("You are win!!!!")
+    else:
+        print("Sorry, try again")
 
 
 def choosenWord():
@@ -88,10 +102,10 @@ def main():
     word = choosenWord()
     guessedLetter=[]
     status = "Let's start it.."
+    gameWin = False
 
-    display_text(word, guessedLetter, status)
-    gameLoop(TRIES, word, guessedLetter, status)
-
+    gameWin= gameLoop(TRIES, word, guessedLetter, status)
+    gameEnd(gameWin)
 
 
 if __name__ =="__main__":
