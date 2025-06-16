@@ -1,5 +1,18 @@
 import random
 
+
+#game MODE
+DEBUG = "debug"
+LAUNCH = "launch"
+
+#Game mode selection
+#-------------------------> SELECTED MODE
+MODE = DEBUG
+
+
+#activated features mode-base
+# 
+
 #quick test
 wordsList = ['apple', 'banana', 'cranbarry']
 
@@ -15,7 +28,7 @@ def main():
     print("Welcome to Hangman!")
     print("===================")
 
-    
+
     gameLoop(tries)
 
 
