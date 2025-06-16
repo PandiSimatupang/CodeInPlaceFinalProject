@@ -11,61 +11,61 @@ MODE = TEST   # chose TEST or LAUNCH
 #-------------------------------------------> SELECTED MODE
 DEBUG = (MODE == TEST)  #checking selected mode.. it's "true" if TEST
 
-
 #quick test
 WORDSLIST = ['apple', 'banana', 'cranbarry']
-
-
-
 #global variable
 TRIES = 5
 
 
-
-
-def display_text(word, guessedLetter):
+def display_text(word, guessedLetter, status):
     #clean screen
     print("\n" * 20)
+
     #game title and some header
     print("Welcome to Hangman!")
     print("===================")
+    
+    #status
+    print("COMM: ", status)
 
     #hits
     print("WORD: ", "_ "*len(word))
 
     if DEBUG:
-        print(f"MODE: {MODE}, choosen word is {word} ")
+        print(f"MODE:  {MODE}", f"choosen word is -----> {word} ")
         print(guessedLetter)
 
 
 
  
-def gameLoop(TRIES, word, guessedLetter):
-    
+def gameLoop(TRIES, word, guessedLetter, status):
+
     while(TRIES>0):
-        display_text(word, guessedLetter)
+
+        display_text(word, guessedLetter, status)
         guess = input("Guess a letter: ")
         #check if user input is "single" alphabet
         if not guess.isalpha():
-            print("Please type an alphabet...") 
+            status = "Please type an alphabet..." 
             continue
         if len(guess) != 1:
-            print("Please only type single alphabet....")
+            status = "Please only type single alphabet...."
             continue
         if guess in guessedLetter:
-            print("This letter is already tried....")
+            status= "This letter is already tried...."
             continue           
         #if all filter above is passed 
         guessedLetter.append(guess)
 
+
+
+
         #matching the letter
         if guess in word:
-            print("match!!")
+            status = "match!!"
         else:
-            print("wrong guess...")
+            status = "wrong guess..."
             TRIES -= 1
-
-
 
 
 def choosenWord():
@@ -75,9 +75,10 @@ def choosenWord():
 def main():
     word = choosenWord()
     guessedLetter=[]
+    status = "Let's start it.."
 
-    display_text(word, guessedLetter)
-    gameLoop(TRIES, word, guessedLetter)
+    display_text(word, guessedLetter, status)
+    gameLoop(TRIES, word, guessedLetter, status)
 
 
 
