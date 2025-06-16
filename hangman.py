@@ -105,17 +105,22 @@ def print_bunny():
      / 　 づ
     """)
 
+def print_sad_face():
+    print(r"""
+    (｡•́︿•̀｡)
+    """)
+
 
 def gameEnd(gameWin, word):
+    clearScreen()
     if gameWin:
-        clearScreen()
         print_bunny()
-        print(f"Hidden word: {word}")
         print("COMM:  You are win!!!!")
-
     else:
+        print_sad_face()
         print("Sorry, try again")
 
+    print(f"Hidden word: {word}")
 
 def choosenWord():
     return random.choice(WORDSLIST)
