@@ -8,7 +8,7 @@ LAUNCH = "LAUNCH"
 
 #Game mode selection
 #------------------------------------------> SELECTED MODE
-MODE = TEST   # chose TEST or LAUNCH
+MODE = LAUNCH   # chose TEST or LAUNCH
 #-------------------------------------------> SELECTED MODE
 DEBUG = MODE == TEST  #checking selected mode.. it's "true" if TEST
 
@@ -180,11 +180,16 @@ def choosenWord():
         return random.choice(WORDSLIST)
     else:
         #read a list base on category from a file
-        with open("data.json", "r") as file:
+        with open("gameDictionary.json", "r") as file:
             data = json.load(file)
         categoryList = list(data.keys())
-        print(categoryList)
-        category=input("test: ")
+
+        num = 0
+        for c in categoryList:
+            print(f"{num+1}. {categoryList[num]}")
+            num += 1
+
+        category=input("Please select number of the category: ")
         return data.get("animal",[])
 
 
