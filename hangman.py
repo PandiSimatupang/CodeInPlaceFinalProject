@@ -7,7 +7,7 @@ LAUNCH = "LAUNCH"
 
 #Game mode selection
 #------------------------------------------> SELECTED MODE
-MODE = TEST   # chose TEST or LAUNCH
+MODE = LAUNCH   # chose TEST or LAUNCH
 #-------------------------------------------> SELECTED MODE
 DEBUG = (MODE == TEST)  #checking selected mode.. it's "true" if TEST
 
@@ -29,7 +29,9 @@ def display_text(word, guessedLetter, status):
     print("COMM: ", status)
 
     #hits
-    print("WORD: ", "_ "*len(word))
+    hints = "_ "*len(word)
+    print("WORD: ", hints)
+
 
     if DEBUG:
         print(f"MODE:  {MODE}", f"choosen word is -----> {word} ")
@@ -44,6 +46,7 @@ def gameLoop(TRIES, word, guessedLetter, status):
 
         display_text(word, guessedLetter, status)
         guess = input("Guess a letter: ")
+
         #check if user input is "single" alphabet
         if not guess.isalpha():
             status = "Please type an alphabet..." 
@@ -54,6 +57,7 @@ def gameLoop(TRIES, word, guessedLetter, status):
         if guess in guessedLetter:
             status= "This letter is already tried...."
             continue           
+
         #if all filter above is passed 
         guessedLetter.append(guess)
 
