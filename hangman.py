@@ -15,10 +15,11 @@ def main():
     print("Welcome to Hangman!")
     print("===================")
 
+    
     gameLoop(tries)
 
 
-
+ 
 def gameLoop(tries):
 
     while(tries>0):
@@ -31,7 +32,12 @@ def gameLoop(tries):
             print("Please only type single alphabet....")
             continue
         
-        tries -= 1
+        #matching the letter
+        if guess in word:
+            print("match!!")
+        else:
+            print("wrong guess...")
+            tries -= 1
 
 
 if __name__ =="__main__":
