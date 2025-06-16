@@ -173,15 +173,19 @@ def gameEnd(gameWin, word):
     print(f"Hidden word: {word}")
     print("\n"*5)
 
-def choosenWord():
-    return random.choice(WORDSLIST)
 
+def choosenWord():
+    if MODE:
+        return random.choice(WORDSLIST)
+    else:
+        pass
 
 def main():
     word = choosenWord()
     guessedLetter=[]
     status = "Let's start it.."
     gameWin = False
+
 
     gameWin= gameLoop(TRIES, word, guessedLetter, status)
     gameEnd(gameWin, word)

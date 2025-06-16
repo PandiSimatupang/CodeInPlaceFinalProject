@@ -1,0 +1,32 @@
+{
+    "fruits": [
+        "apple",
+        "banana",
+        "orange",
+        "grape",
+        "mango",
+        "watermelon",
+        "pineapple",
+        "peach"
+    ],
+    "animals": [
+        "cat",
+        "dog",
+        "elephant",
+        "lion",
+        "tiger",
+        "zebra",
+        "rabbit",
+        "giraffe"
+    ],
+    "household_items": [
+        "chair",
+        "table",
+        "lamp",
+        "sofa",
+        "bed",
+        "mirror",
+        "fridge",
+        "television"
+    ]
+}
