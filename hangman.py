@@ -180,7 +180,15 @@ def gameEnd(gameWin, word):
 
 def choosenWord():
     categoryNum = 0
+    note=""
     while categoryNum == 0:
+        #clear screen
+        clearScreen()
+
+        #game title and some header
+        print("Welcome to Hangman!")
+        print("===================")
+
         #read a list base on category from a file
         with open("gameDictionary.json", "r") as file:
             data = json.load(file)
@@ -190,21 +198,21 @@ def choosenWord():
         for c in categoryList:
             print(f"{num+1}. {categoryList[num]}")
             num += 1
-
+        print(note)
         userNum = input("Please select a category number: ")
 
         if not userNum.isdigit():
-            print("Please input a number in the category range")
+            note= "----->> Please input a number in the category range"
             continue
         else:
-            if userNum < len(categoryList) or userNum > len(categoryList):
-                print("Please input a number in the category range")
+            if int(userNum) < 0 or int(userNum) > len(categoryList):
+                note= "----->> Please input a number in the category range"
                 continue
 
         categoryNum = int(userNum)
-        
-        category = categoryList[categoryNum-1]
-        WORDSLIST = data.get(category,[])
+
+    category = categoryList[categoryNum-1]
+    WORDSLIST = data.get(category,[])
     return category, random.choice(WORDSLIST) 
 
 def main():
