@@ -17,17 +17,37 @@ WORDSLIST = ['apple', 'banana', 'cranbarry']
 
 
 
-
 #global variable
 TRIES = 5
-WORD = random.choice(WORDSLIST)
+
+
+
+
+def display_text(WORD, guessedLetter):
+    #clean screen
+    print("\n" * 20)
+    #game title and some header
+    print("Welcome to Hangman!")
+    print("===================")
+
+    #hits
+    for letter in WORD:
+        if (guess in WORD):
+            " ".join(letter)
+        else:
+            " ".join("_")
+
+    if DEBUG:
+        print(f"MODE: {MODE}, choosen word is {WORD} ")
 
 
 
  
-def gameLoop(TRIES):
-
+def gameLoop(TRIES, word, guessedLetter):
+    guessedLetter =[]
+    
     while(TRIES>0):
+        display_text(word, guess)
         guess = input("Guess a letter: ")
         #check if user input is "single" alphabet
         if not guess.isalpha():
@@ -36,7 +56,9 @@ def gameLoop(TRIES):
         if len(guess) != 1:
             print("Please only type single alphabet....")
             continue
-        
+        #if all filter above is passed 
+        guessedLetter.append(guess)
+
         #matching the letter
         if guess in WORD:
             print("match!!")
@@ -46,21 +68,18 @@ def gameLoop(TRIES):
 
 
 
-def display_text():
-    #game title and some header
-    print("\n" * 20)
-    print("Welcome to Hangman!")
-    print("===================")
 
-    if DEBUG:
-        print(f"MODE: {MODE}, choosen word is {WORD} ")
-
-
+def choosenWord():
+    return random.choice(WORDSLIST)
 
 
 def main():
-    display_text()
-    gameLoop(TRIES)
+    word = choosenWord()
+    
+    
+
+    display_text(word, guess)
+    gameLoop(TRIES, word)
 
 
 
