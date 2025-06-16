@@ -22,11 +22,7 @@ word = random.choice(wordsList)
 
 
 
-def main():
 
-
-
-    gameLoop(tries)
 
 
  
@@ -50,11 +46,24 @@ def gameLoop(tries):
             tries -= 1
 
 
-if __name__ =="__main__":
-    main()
-
 
 def display_text():
     #game title and some header
     print("Welcome to Hangman!")
     print("===================")
+
+
+
+
+
+
+
+
+def main():
+    display_text()
+    gameLoop(tries)
+
+
+
+if __name__ =="__main__":
+    main()
