@@ -109,6 +109,7 @@ def display_text(word, guessedLetter, status, TRIES):
     if DEBUG:
         print(f"MODE:  {MODE}", f"choosen word is -----> {word} ")
        #print(guessedLetter)
+    
 
 
 
@@ -176,22 +177,19 @@ def gameEnd(gameWin, word):
 
 
 def choosenWord():
-    if DEBUG:
-        return random.choice(WORDSLIST)
-    else:
-        #read a list base on category from a file
-        with open("gameDictionary.json", "r") as file:
-            data = json.load(file)
-        categoryList = list(data.keys())
+    
+    #read a list base on category from a file
+    with open("gameDictionary.json", "r") as file:
+        data = json.load(file)
+    categoryList = list(data.keys())
 
-        num = 0
-        for c in categoryList:
-            print(f"{num+1}. {categoryList[num]}")
-            num += 1
-
-        category=input("Please select number of the category: ")
-        return data.get("animal",[])
-
+    num = 0
+    for c in categoryList:
+        print(f"{num+1}. {categoryList[num]}")
+        num += 1
+    categoryNum=int(input("Please select number of the category: "))
+    WORDSLIST = data.get(categoryList[num-1],[])
+    return random.choice(WORDSLIST)
 
 def main():
     word = choosenWord()
