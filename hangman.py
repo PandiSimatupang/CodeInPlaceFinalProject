@@ -18,6 +18,60 @@ WORDSLIST = ['apple', 'banana', 'cranbarry']
 TRIES = 5
 
 
+HANGMAN_PICS = [
+    '''
+     +---+
+     |   |
+         |
+         |
+         |
+         |
+    =========''', '''
+     +---+
+     |   |
+     O   |
+         |
+         |
+         |
+    =========''', '''
+     +---+
+     |   |
+     O   |
+     |   |
+         |
+         |
+    =========''', '''
+     +---+
+     |   |
+     O   |
+    /|   |
+         |
+         |
+    =========''', '''
+     +---+
+     |   |
+     O   |
+    /|\\  |
+         |
+         |
+    =========''', '''
+     +---+
+     |   |
+     O   |
+    /|\\  |
+    /    |
+         |
+    =========''', '''
+     +---+
+     |   |
+     O   |
+    /|\\  |
+    / \\  |
+         |
+    ========='''
+]
+
+
 def clearScreen():
     if os.name == 'posix':
         os.system('clear')
@@ -121,6 +175,7 @@ def gameEnd(gameWin, word):
         print("Sorry, try again")
 
     print(f"Hidden word: {word}")
+    print("\n"*5)
 
 def choosenWord():
     return random.choice(WORDSLIST)
