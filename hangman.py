@@ -7,7 +7,7 @@ LAUNCH = "LAUNCH"
 
 #Game mode selection
 #------------------------------------------> SELECTED MODE
-MODE = LAUNCH   # chose TEST or LAUNCH
+MODE = TEST   # chose TEST or LAUNCH
 #-------------------------------------------> SELECTED MODE
 DEBUG = (MODE == TEST)  #checking selected mode.. it's "true" if TEST
 
@@ -23,7 +23,7 @@ TRIES = 5
 
 
 
-def display_text(WORD, guessedLetter):
+def display_text(word, guessedLetter):
     #clean screen
     print("\n" * 20)
     #game title and some header
@@ -31,23 +31,19 @@ def display_text(WORD, guessedLetter):
     print("===================")
 
     #hits
-    for letter in WORD:
-        if (guess in WORD):
-            " ".join(letter)
-        else:
-            " ".join("_")
+    print("_ "*len(word))
 
     if DEBUG:
-        print(f"MODE: {MODE}, choosen word is {WORD} ")
+        print(f"MODE: {MODE}, choosen word is {word} ")
+        print(guessedLetter)
 
 
 
  
 def gameLoop(TRIES, word, guessedLetter):
-    guessedLetter =[]
     
     while(TRIES>0):
-        display_text(word, guess)
+        display_text(word, guessedLetter)
         guess = input("Guess a letter: ")
         #check if user input is "single" alphabet
         if not guess.isalpha():
@@ -60,7 +56,7 @@ def gameLoop(TRIES, word, guessedLetter):
         guessedLetter.append(guess)
 
         #matching the letter
-        if guess in WORD:
+        if guess in word:
             print("match!!")
         else:
             print("wrong guess...")
@@ -75,11 +71,10 @@ def choosenWord():
 
 def main():
     word = choosenWord()
-    
-    
+    guessedLetter=[]
 
-    display_text(word, guess)
-    gameLoop(TRIES, word)
+    display_text(word, guessedLetter)
+    gameLoop(TRIES, word, guessedLetter)
 
 
 
