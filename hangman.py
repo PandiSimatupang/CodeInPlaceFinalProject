@@ -10,11 +10,10 @@ LAUNCH = "launch"
 MODE = DEBUG
 
 
-#activated features mode-base
-# 
-
 #quick test
 wordsList = ['apple', 'banana', 'cranbarry']
+
+
 
 
 #global variable
@@ -24,9 +23,7 @@ word = random.choice(wordsList)
 
 
 def main():
-    #game title and some header
-    print("Welcome to Hangman!")
-    print("===================")
+
 
 
     gameLoop(tries)
@@ -55,3 +52,9 @@ def gameLoop(tries):
 
 if __name__ =="__main__":
     main()
+
+
+def display_text():
+    #game title and some header
+    print("Welcome to Hangman!")
+    print("===================")
