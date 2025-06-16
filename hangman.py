@@ -1,4 +1,5 @@
 import random
+import os
 
 
 #game MODE
@@ -7,7 +8,7 @@ LAUNCH = "LAUNCH"
 
 #Game mode selection
 #------------------------------------------> SELECTED MODE
-MODE = TEST   # chose TEST or LAUNCH
+MODE = LAUNCH   # chose TEST or LAUNCH
 #-------------------------------------------> SELECTED MODE
 DEBUG = (MODE == TEST)  #checking selected mode.. it's "true" if TEST
 
@@ -17,9 +18,18 @@ WORDSLIST = ['apple', 'banana', 'cranbarry']
 TRIES = 5
 
 
+def clearScreen():
+    if os.name == 'posix':
+        os.system('clear')
+    else:
+        #assuming windows
+        os.system('cls')
+
+
 def display_text(word, guessedLetter, status, TRIES):
     #clean screen
-    print("\n" * 20)
+    #print("\n" * 20)
+    clearScreen()
 
     #game title and some header
     print("Welcome to Hangman!")
@@ -37,7 +47,7 @@ def display_text(word, guessedLetter, status, TRIES):
             hints += ("_ ")
         
         
-    print("Tries :", TRIES)
+    print("Attempt(s) Remaining:", TRIES)
     print("Guessed Letters: ", guessedLetter)
     print("WORD: ", hints)
     
@@ -89,7 +99,9 @@ def gameLoop(TRIES, word, guessedLetter, status):
 
 def gameEnd(gameWin):
     if gameWin:
-        print("You are win!!!!")
+        clearScreen()
+        print("COMM:  You are win!!!!")
+
     else:
         print("Sorry, try again")
 
@@ -110,3 +122,5 @@ def main():
 
 if __name__ =="__main__":
     main()
+
+
