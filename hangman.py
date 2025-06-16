@@ -121,7 +121,7 @@ def gameLoop(TRIES, word, guessedLetter, status, category):
     while(TRIES>0):
 
         display_text(word, guessedLetter, status, TRIES, category)
-        guess = input("Guess a letter: ")
+        guess = input("Guess a letter: ").lower()
 
         #check if user input is "single" alphabet
         if not guess.isalpha():
