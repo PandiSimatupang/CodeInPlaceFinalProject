@@ -8,7 +8,7 @@ LAUNCH = "LAUNCH"
 
 #Game mode selection
 #------------------------------------------> SELECTED MODE
-MODE = LAUNCH   # chose TEST or LAUNCH
+MODE = TEST   # chose TEST or LAUNCH
 #-------------------------------------------> SELECTED MODE
 DEBUG = (MODE == TEST)  #checking selected mode.. it's "true" if TEST
 
@@ -88,7 +88,8 @@ def display_text(word, guessedLetter, status, TRIES):
     #game title and some header
     print("Welcome to Hangman!")
     print("===================")
-    
+
+    print(HANGMAN_PICS[5-TRIES])
     #status
     print("COMM: ", status)
 
@@ -171,6 +172,7 @@ def gameEnd(gameWin, word):
         print_bunny()
         print("COMM:  You are win!!!!")
     else:
+        print(HANGMAN_PICS[6])
         print_sad_face()
         print("Sorry, try again")
 
