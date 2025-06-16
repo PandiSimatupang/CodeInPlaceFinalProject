@@ -7,7 +7,7 @@ LAUNCH = "LAUNCH"
 
 #Game mode selection
 #------------------------------------------> SELECTED MODE
-MODE = LAUNCH   # chose TEST or LAUNCH
+MODE = TEST   # chose TEST or LAUNCH
 #-------------------------------------------> SELECTED MODE
 DEBUG = (MODE == TEST)  #checking selected mode.. it's "true" if TEST
 
@@ -28,14 +28,22 @@ def display_text(word, guessedLetter, status):
     #status
     print("COMM: ", status)
 
-    #hits
-    hints = "_ "*len(word)
+    #hints
+    hints= ""
+    for letter in word:
+        if letter in guessedLetter:
+            hints += (letter + " ") 
+        else:
+            hints += ("_ ")
+        
+        
+        
     print("WORD: ", hints)
 
 
     if DEBUG:
         print(f"MODE:  {MODE}", f"choosen word is -----> {word} ")
-        print(guessedLetter)
+       #print(guessedLetter)
 
 
 
