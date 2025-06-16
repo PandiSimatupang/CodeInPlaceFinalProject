@@ -2,33 +2,32 @@ import random
 
 
 #game MODE
-DEBUG = "debug"
+TEST = "testing"
 LAUNCH = "launch"
 
 #Game mode selection
 #-------------------------> SELECTED MODE
-MODE = DEBUG
+MODE = TEST
+#-------------------------> SELECTED MODE
+DEBUG = (MODE == TEST)  #checking selected mode.. it's "true" if TEST
 
 
 #quick test
-wordsList = ['apple', 'banana', 'cranbarry']
+WORDSLIST = ['apple', 'banana', 'cranbarry']
 
 
 
 
 #global variable
-tries = 5
-word = random.choice(wordsList)
-
-
-
+TRIES = 5
+WORD = random.choice(WORDSLIST)
 
 
 
  
-def gameLoop(tries):
+def gameLoop(TRIES):
 
-    while(tries>0):
+    while(TRIES>0):
         guess = input("Guess a letter: ")
         #check if user input is "single" alphabet
         if not guess.isalpha():
@@ -43,7 +42,7 @@ def gameLoop(tries):
             print("match!!")
         else:
             print("wrong guess...")
-            tries -= 1
+            TRIES -= 1
 
 
 
@@ -52,16 +51,15 @@ def display_text():
     print("Welcome to Hangman!")
     print("===================")
 
-
-
-
+    if DEBUG:
+        print(f"MODE: {MODE}, choosen word is {WORD} ")
 
 
 
 
 def main():
     display_text()
-    gameLoop(tries)
+    gameLoop(TRIES)
 
 
 
