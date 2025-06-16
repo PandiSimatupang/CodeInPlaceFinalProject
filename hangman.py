@@ -80,7 +80,7 @@ def clearScreen():
         os.system('cls')
 
 
-def display_text(word, guessedLetter, status, TRIES):
+def display_text(word, guessedLetter, status, TRIES, category):
     #clean screen
     #print("\n" * 20)
     clearScreen()
@@ -93,6 +93,7 @@ def display_text(word, guessedLetter, status, TRIES):
     #status
     print("COMM: ", status)
 
+    
     #hints
     hints= ""
     for letter in word:
@@ -104,6 +105,7 @@ def display_text(word, guessedLetter, status, TRIES):
         
     print("Attempt(s) Remaining:", TRIES)
     print("Guessed Letters: ", guessedLetter)
+    print(f"category: {category}")
     print("WORD: ", hints)
     
     if DEBUG:
@@ -114,11 +116,11 @@ def display_text(word, guessedLetter, status, TRIES):
 
 
  
-def gameLoop(TRIES, word, guessedLetter, status):
+def gameLoop(TRIES, word, guessedLetter, status, category):
 
     while(TRIES>0):
 
-        display_text(word, guessedLetter, status, TRIES)
+        display_text(word, guessedLetter, status, TRIES, category)
         guess = input("Guess a letter: ")
 
         #check if user input is "single" alphabet
@@ -177,7 +179,6 @@ def gameEnd(gameWin, word):
 
 
 def choosenWord():
-    
     #read a list base on category from a file
     with open("gameDictionary.json", "r") as file:
         data = json.load(file)
@@ -188,16 +189,17 @@ def choosenWord():
         print(f"{num+1}. {categoryList[num]}")
         num += 1
     categoryNum=int(input("Please select number of the category: "))
-    WORDSLIST = data.get(categoryList[num-1],[])
-    return random.choice(WORDSLIST)
+    category = categoryList[categoryNum-1]
+    WORDSLIST = data.get(category,[])
+    return category, random.choice(WORDSLIST) 
 
 def main():
-    word = choosenWord()
+    category, word = choosenWord()
     guessedLetter=[]
     status = "Let's start it.."
     gameWin = False
 
-    gameWin= gameLoop(TRIES, word, guessedLetter, status)
+    gameWin= gameLoop(TRIES, word, guessedLetter, status, category)
     gameEnd(gameWin, word)
 
 
