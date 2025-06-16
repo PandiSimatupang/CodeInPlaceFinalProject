@@ -1,5 +1,6 @@
 import random
 import os
+import json
 
 #game MODE
 TEST = "TESTING"
@@ -9,7 +10,7 @@ LAUNCH = "LAUNCH"
 #------------------------------------------> SELECTED MODE
 MODE = TEST   # chose TEST or LAUNCH
 #-------------------------------------------> SELECTED MODE
-DEBUG = (MODE == TEST)  #checking selected mode.. it's "true" if TEST
+DEBUG = MODE == TEST  #checking selected mode.. it's "true" if TEST
 
 #quick test
 WORDSLIST = ['apple', 'banana', 'cranbarry']
@@ -175,17 +176,23 @@ def gameEnd(gameWin, word):
 
 
 def choosenWord():
-    if MODE:
+    if DEBUG:
         return random.choice(WORDSLIST)
     else:
-        pass
+        #read a list base on category from a file
+        with open("data.json", "r") as file:
+            data = json.load(file)
+        categoryList = list(data.keys())
+        print(categoryList)
+        category=input("test: ")
+        return data.get("animal",[])
+
 
 def main():
     word = choosenWord()
     guessedLetter=[]
     status = "Let's start it.."
     gameWin = False
-
 
     gameWin= gameLoop(TRIES, word, guessedLetter, status)
     gameEnd(gameWin, word)
